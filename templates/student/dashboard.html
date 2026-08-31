@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block content %}
+<div class="page-head"><div><p class="eyebrow">MY REPORTS</p><h1>Your RECLAIM activity</h1></div></div>
+<div class="tabs"><h2>Lost Items</h2></div>
+<div class="cards">{% for x in lost %}<div class="card"><span class="pill {{x.status}}">{{x.status.replace("_"," ")}}</span><h3>{{x.category}} {{x.brand or ""}}</h3><p>{{x.location}} · {{x.date}}</p><p>{{x.details or "No additional details."}}</p></div>{% else %}<div class="empty">No lost reports yet.</div>{% endfor %}</div>
+<div class="tabs"><h2>Found Items</h2></div>
+<div class="cards">{% for x in found %}<div class="card"><span class="pill">registered</span><h3>{{x.category}} {{x.brand or ""}}</h3><p>{{x.location}} · {{x.date}}</p></div>{% else %}<div class="empty">No found items yet.</div>{% endfor %}</div>
+<div class="tabs"><h2>Notifications</h2></div>
+<div class="cards">{% for n in notifications %}<div class="card"><h3>{{n.title}}</h3><p>{{n.message}}</p></div>{% else %}<div class="empty">No notifications.</div>{% endfor %}</div>
+{% endblock %}

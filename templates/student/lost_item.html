@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block content %}
+<div class="form-shell wide"><p class="eyebrow">REPORT LOST ITEM</p><h1>Tell us what you lost.</h1>
+<form method="post" enctype="multipart/form-data">
+<div class="form-grid">
+<label>Category<select name="category" required><option value="">Select</option>{% for x in ["Mobile Phone","Laptop","Tablet","Wallet","College ID Card","Watch","Earphones / Headphones","Bag","Keys","Books","Calculator","Electronics","Other"] %}<option>{{x}}</option>{% endfor %}</select></label>
+<label>Brand<input name="brand"></label><label>Model<input name="model"></label><label>Color<input name="color"></label>
+<label>Lost Location<input name="location" required></label><label>Date<input type="date" name="date" required></label><label>Approx. Time<input type="time" name="time"></label>
+<label class="full">Detailed / identifying information<textarea name="details" rows="5" placeholder="Stickers, marks, case, contents, etc."></textarea></label>
+<label class="full">Item image<input type="file" name="image" accept=".jpg,.jpeg,.png,.webp"></label>
+</div><button class="btn primary">Submit Lost Report</button></form></div>{% endblock %}

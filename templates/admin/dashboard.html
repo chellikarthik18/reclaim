@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}
+<p class="eyebrow">STUDENT HELPLINE CENTRE</p><h1>Control dashboard</h1>
+<div class="stats"><div><b>{{active}}</b><span>Active Lost Items</span></div><div><b>{{found}}</b><span>Found Items</span></div><div><b>{{possible}}</b><span>Possible Matches</span></div><div><b>{{reclaimed}}</b><span>Items Reclaimed</span></div></div>
+<div class="card large"><h2>Human control</h2><p>The system never verifies, emails, or closes a case automatically. Review possible matches manually.</p><a class="btn primary" href="{{ url_for('admin.matches') }}">Review Possible Matches →</a></div>
+{% endblock %}

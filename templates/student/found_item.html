@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<div class="notice"><strong>Important:</strong> If you physically found an item, please hand it to the Student Helpline Centre. The centre is responsible for verification and communication.</div>
+<div class="form-shell wide"><p class="eyebrow">REGISTER FOUND ITEM</p><h1>Help reunite an item.</h1>
+<form method="post" enctype="multipart/form-data">
+<div class="form-grid">
+<label>Finder Roll Number<input value="{{ current_user.roll_no }}" disabled><small>Recorded from your account.</small></label>
+<label>Category<select name="category" required><option value="">Select</option>{% for x in ["Mobile Phone","Laptop","Tablet","Wallet","College ID Card","Watch","Earphones / Headphones","Bag","Keys","Books","Calculator","Electronics","Other"] %}<option>{{x}}</option>{% endfor %}</select></label>
+<label>Brand<input name="brand"></label><label>Model<input name="model"></label><label>Color<input name="color"></label>
+<label>Found Location<input name="location" required></label><label>Date<input type="date" name="date" required></label><label>Approx. Time<input type="time" name="time"></label>
+<label class="full">Detailed information<textarea name="details" rows="5"></textarea></label>
+<label class="full">Found item image<input type="file" name="image" accept=".jpg,.jpeg,.png,.webp"></label>
+</div><button class="btn primary">Register Found Item</button></form></div>{% endblock %}

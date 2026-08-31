@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero">
+<div>
+<p class="eyebrow">CAMPUS LOST & FOUND</p>
+<h1>Lost it.<br>Found it.<br><span>Reclaim it.</span></h1>
+<p class="lead">Connecting lost belongings with their rightful owners — with the Student Helpline Centre always in control.</p>
+<div class="actions">
+<a class="btn primary" href="{{ url_for('lost.report_lost') }}">I LOST AN ITEM →</a>
+<a class="btn secondary" href="{{ url_for('found.report_found') }}">I FOUND AN ITEM →</a>
+</div>
+</div>
+<div class="detective">
+<div class="magnify">⌕</div>
+<div class="person">◉</div>
+<div class="item-card">ID CARD</div><div class="item-card wallet">WALLET</div>
+<div class="item-card phone">PHONE</div><div class="item-card keys">KEYS</div>
+</div>
+</section>
+<section class="info-grid">
+<div class="card"><h3>Human verification</h3><p>Matching only creates a possible match. Helpline staff make the final decision.</p></div>
+<div class="card"><h3>Manual email</h3><p>Students receive an email only when staff explicitly press SEND EMAIL.</p></div>
+<div class="card"><h3>Campus-first</h3><p>Built to run on one laptop or across two laptops on the same Wi-Fi network.</p></div>
+</section>
+{% endblock %}

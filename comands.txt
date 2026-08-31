@@ -1,0 +1,12 @@
+G:\r2\RECLAIM
+python main.py
+http://127.0.0.1:5000
+helpline:
+http://127.0.0.1:5000/helpline
+Email: admin@reclaim.local
+Password: admin123
+founder side:
+G:\r2\RECLAIM
+python main.py
+http://127.0.0.1:5000/login
+http://127.0.0.1:5000/found

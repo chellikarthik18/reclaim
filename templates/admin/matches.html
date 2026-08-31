@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block content %}
+<p class="eyebrow">HUMAN REVIEW</p><h1>Possible Matches</h1>
+{% for c in claims %}
+<div class="match">
+<div class="match-side"><span class="pill">{{c.status}}</span><h2>Lost Item</h2><p><b>{{c.lost_item.category}}</b> · {{c.lost_item.brand or ""}} {{c.lost_item.model or ""}}</p><p>Student: {{c.lost_item.reporter.roll_no}}</p><p>Location: {{c.lost_item.location}}</p><p>Date: {{c.lost_item.date}}</p><p>{{c.lost_item.details}}</p>{% if c.lost_item.image_path %}<img src="{{ url_for('static_upload', filename=c.lost_item.image_path) }}" onerror="this.style.display='none'">{% endif %}</div>
+<div class="score"><strong>{{ "%.0f"|format(c.match_score) }}%</strong><span>Possible Match</span><small>Human verification required</small></div>
+<div class="match-side"><h2>Found Item</h2><p><b>{{c.found_item.category}}</b> · {{c.found_item.brand or ""}} {{c.found_item.model or ""}}</p><p>Finder: {{c.found_item.reporter.roll_no}}</p><p>Location: {{c.found_item.location}}</p><p>Date: {{c.found_item.date}}</p><p>{{c.found_item.details}}</p>{% if c.found_item.image_path %}<img src="{{ url_for('static_upload', filename=c.found_item.image_path) }}" onerror="this.style.display='none'">{% endif %}</div>
+<div class="match-actions">
+{% if c.status == "possible" %}<form method="post" action="{{ url_for('admin.verify', claim_id=c.id) }}"><button class="btn primary">VERIFY MATCH</button></form>{% endif %}
+{% if c.status in ["possible","verified"] %}<form method="post" action="{{ url_for('admin.send_email', claim_id=c.id) }}" onsubmit="return confirm('Send the notification email to the student? This is a human-controlled action.');"><button class="btn email">SEND EMAIL</button></form>{% endif %}
+{% if c.status == "possible" %}<form method="post" action="{{ url_for('admin.reject', claim_id=c.id) }}"><button class="btn danger">NOT A MATCH</button></form>{% endif %}
+</div></div>
+{% else %}<div class="empty">No possible matches.</div>{% endfor %}
+{% endblock %}
